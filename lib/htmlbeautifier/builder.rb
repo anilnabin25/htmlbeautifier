@@ -7,7 +7,7 @@ module HtmlBeautifier
       indent: "  ",
       initial_level: 0,
       stop_on_errors: false,
-      keep_blank_lines: 2
+      keep_blank_lines: 0
     }
 
     def initialize(output, options = {})
