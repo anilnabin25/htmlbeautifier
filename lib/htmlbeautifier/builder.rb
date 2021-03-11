@@ -7,7 +7,7 @@ module HtmlBeautifier
       indent: "  ",
       initial_level: 0,
       stop_on_errors: false,
-      keep_blank_lines: 0
+      keep_blank_lines: 2
     }
 
     def initialize(output, options = {})
@@ -40,9 +40,10 @@ module HtmlBeautifier
     end
 
     def emit(*strings)
+      strings_join = strings.join("")
       @output << "\n" if @new_line && !@empty
-      @output << (@tab * @level) if @new_line
-      @output << strings.join("")
+      @output << (@tab * @level) if @new_line && !strings_join.strip.empty?
+      @output << strings_join
       @new_line = false
       @empty = false
     end
